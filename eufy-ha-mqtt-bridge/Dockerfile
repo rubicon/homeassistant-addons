@@ -3,7 +3,8 @@ FROM $BUILD_FROM
 
 ARG VERSION=0.2.19
 
-RUN apk add --no-cache nodejs npm make g++ sqlite
+# install nodejs and some build stuff
+RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && apt-get install -y nodejs make g++
 
 # add source and unpack
 ADD "https://github.com/matijse/eufy-ha-mqtt-bridge/archive/${VERSION}.tar.gz" /src.tar.gz

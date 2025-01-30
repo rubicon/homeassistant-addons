@@ -1,14 +1,12 @@
 slug: adsb-multi-portal-feeder
-stage: experimental
 url: https://github.com/MaxWinterstein/homeassistant-addons/
+image: ghcr.io/maxwinterstein/homeassistant-adsb-multi-portal-feeder-{arch}
 usb: true
-version: 1.15.0
+version: 1.32.1
 arch:
-  - armhf
   - armv7
   - aarch64
   - amd64
-boot: auto
 description: Dump1090 based feeder for FlightRadar24, FlightAware and more
 hassio_api: true
 homeassistant_api: true
@@ -30,6 +28,10 @@ options:
 
   HTML_SITE_LAT: HOMEASSISTANT_LATITUDE
   HTML_SITE_LON: HOMEASSISTANT_LONGITUDE
+  HTML_SITE_ALT: HOMEASSISTANT_ELEVATION
+
+  SYSTEM_HTTP_ULIMIT_N: 1048576
+  SYSTEM_FR24FEED_ULIMIT_N: 1024
 
 panel_icon: mdi:airplane
 panel_title: ADS-B Feeder
@@ -60,6 +62,10 @@ schema:
   SERVICE_ENABLE_IMPORT_OVER_NETCAT: bool?
   SERVICE_ENABLE_ADSBEXCHANGE: bool?
   SERVICE_ENABLE_PLANEFINDER: bool?
+  SERVICE_ENABLE_OPENSKY: bool?
+  SERVICE_ENABLE_ADSBFI: bool?
+  SERVICE_ENABLE_RADARBOX: bool?
+  SERVICE_ENABLE_ADSBHUB: bool?
 
   # FlightAware (piaware)
   PIAWARE_FEEDER_DASH_ID: str?
@@ -77,6 +83,7 @@ schema:
   FR24FEED_LOGPATH: str?
   FR24FEED_MLAT: str?
   FR24FEED_MLAT_DASH_WITHOUT_DASH_GPS: str?
+  FR24FEED_ULIMIT_N: int?
 
   # ADS-B Exchange
   ADSBEXCHANGE_UUID: str?
@@ -91,13 +98,38 @@ schema:
   # Plane Finder
   PLANEFINDER_SHARECODE: str?
 
+  # Opensky
+  OPENSKY_USERNAME: str?
+  OPENSKY_SERIAL: str?
+  OPENSKY_DEVICE_TYPE: str?
+  OPENSKY_INPUT_HOST: str?
+  OPENSKY_INPUT_PORT: str?
+
+  # adsb.fi
+  ADSBFI_UUID: str?
+  ADSBFI_STATION_NAME: str?
+  ADSBFI_MLAT: bool?
+
+  # RadarBox
+  RADARBOX_SHARING_KEY: str?
+  RADARBOX_INPUT_HOST: str?
+  RADARBOX_INPUT_PORT: port?
+  RADARBOX_MLAT: bool?
+
+  # ADSBHub
+  ADSBHUB_CKEY: str?
+
   # Dump1090 & Web UI
   HTML_SITE_LAT: match([+-]?(([1-9][0-9]*)|(0))([.,][0-9]+)?|HOMEASSISTANT_LATITUDE)?
   HTML_SITE_LON: match([+-]?(([1-9][0-9]*)|(0))([.,][0-9]+)?|HOMEASSISTANT_LONGITUDE)?
+  HTML_SITE_ALT: match([+-]?(([1-9][0-9]*)|(0))([.,][0-9]+)?|HOMEASSISTANT_ELEVATION)?
   HTML_SITE_NAME: str?
-  HTML_DEFAULT_TRACKER: list(FlightAware|Flightradar24)?
+  HTML_DEFAULT_TRACKER: list(FlightAware|Flightradar24|Adsbexchange|Planefinder|OpenskyNetwork)?
   HTML_RECEIVER_STATS_PAGE_FLIGHTAWARE: url?
   HTML_RECEIVER_STATS_PAGE_FLIGHTRADAR24: url?
+  HTML_RECEIVER_STATS_PAGE_ADSBEXCHANGE: url?
+  HTML_RECEIVER_STATS_PAGE_PLANEFINDER: url?
+  HTML_RECEIVER_STATS_PAGE_OPENSKY_NETWORK: url?
   HTML_FR24_FEEDER_STATUS_PAGE: url?
   DUMP1090_ADDITIONAL_ARGS: str?
 
@@ -117,3 +149,7 @@ schema:
 
   # Open Weather Map layers
   LAYERS_OWM_API_KEY: str?
+
+  # System
+  SYSTEM_HTTP_ULIMIT_N: int?
+  SYSTEM_FR24FEED_ULIMIT_N: int?

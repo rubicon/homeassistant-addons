@@ -1,5 +1,5 @@
 {
-  "name": "Eufy Home Assistant MQTT Bridge",
+  "name": "⚰️ Eufy Home Assistant MQTT Bridge",
   "version": "1.24.0",
   "slug": "eufy-ha-mqtt-bridge",
   "image": "maxwinterstein/homeassistant-addon-eufy-ha-mqtt-bridge-{arch}",
@@ -41,7 +41,7 @@
     "log_level": "list(error|warn|info|http|verbose|debug|silly)",
     "eval": "str?"
   },
-  "stage": "experimental",
+  "stage": "deprecated",
   "url": "https://github.com/matijse/eufy-ha-mqtt-bridge/",
   "map": ["share:rw"],
   "hassio_role": "default",

@@ -10,37 +10,12 @@ jobs:
   create_mr_and_build_image:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - run: cd eufy-ha-mqtt-bridge && ./version-updater.sh
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
-        if: ${{ env.CONTINUE }}
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-        if: ${{ env.CONTINUE }}
-
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-        if: ${{ env.CONTINUE }}
-
-      - name: Test build
-        uses: home-assistant/builder@master
-        with:
-          args: |
-            --all \
-            --aarch64 \
-            --target eufy-ha-mqtt-bridge \
-            --docker-hub maxwinterstein
-        if: ${{ env.CONTINUE }}
-
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v7
         with:
           title: Update eufy-mqtt-ha-bridge to version ${{ env.MQTT_BRIDGE_VERSION }}
           commit-message: Update eufy-mqtt-ha-bridge to version ${{ env.MQTT_BRIDGE_VERSION }}

@@ -6,19 +6,29 @@ _Everything here is ment to be **experimental**. Happy to see feedback!_
 
 ## Home Assistant Addon repository containing
 
-### <img src="angry-ip-scanner/icon.png" width="40px"> Angry IP Scanner
+### <img src="angryipscanner/icon.png" width="40px"> Angry IP Scanner
 
 Wraps the well known [Angry IP Scanner](https://angryip.org/) to make it usable as Add-on.
 
-### <img src="adsb-multi-portal-feeder/icon.png" width="40px"> ADB-S Multi Portal Feeder
+### <img src="adsb-multi-portal-feeder/icon.png" width="40px"> ADS-B Multi Portal Feeder
 
-Observe flight traffic using some cheap ADB-S USB-Stick and feed towards FlightRadar24 and FlightAware.
+Observe flight traffic using some cheap ADS-B USB-Stick and feed towards FlightRadar24 and FlightAware.
 
 Based on the incredible [docker-fr24feed-piaware-dump1090](https://github.com/Thom-x/docker-fr24feed-piaware-dump1090) docker image by [Thom-x](https://github.com/Thom-x).
 
-### <img src="eufy-ha-mqtt-bridge/icon.png" width="40px"> Eufy Home Assistant MQTT Bridge ([matijse/eufy-ha-mqtt-bridge](https://github.com/matijse/eufy-ha-mqtt-bridge))
+### <img src="awtrix/icon.png" width="40px"> AWTRIX Controller
 
-Forwards Eufy Security push notifications to Home Assistant via MQTT.
+(AWsome maTRIX) is a full color dot matrix that displays applications from simple time display to Fortnite account statistics.
+
+Most of the work was done from/within https://github.com/lubeda/repository - I just made it work and adjusted some little things.
+
+Made for the awesome AWTRIX project by blueforcer. Even it is discontinued, I like it.
+
+### <img src="cups/icon.png" width="40px"> CUPS ([cups.org](http://www.cups.org))
+
+The well known printing server.
+
+(In early development)
 
 ### <img src="toogoodtogo-ha-mqtt-bridge/icon.png" width="40px"> TooGoodToGo Home Assistant MQTT Bridge ([maxwinterstein/toogoodtogo-ha-mqtt-bridge](https://github.com/maxwinterstein/toogoodtogo-ha-mqtt-bridge))
 
@@ -34,9 +44,9 @@ Small proxy to add OctoPrint to the Home Assistant.
 
 ## Installation
 
-Go to the _Supervisor_ Panel, select _Add-on Store_, click the three little dots on the upper right and select _Repositories_. Now fill the _Add repository_ testbox with `https://github.com/MaxWinterstein/homeassistant-addons/` and click _Add_.
+[![Add repository on my Home Assistant][repository-badge]][repository-url]
 
-![installation](https://raw.githubusercontent.com/MaxWinterstein/homeassistant-addons/main/add_repository.png)
+If you want to do add the repository manually, please follow the procedure highlighted in the [Home Assistant website](https://home-assistant.io/hassio/installing_third_party_addons). Use the following URL to add this repository: `https://github.com/MaxWinterstein/homeassistant-addons/`
 
 ## Deprecated add-ons
 
@@ -49,3 +59,12 @@ This is a complete copy of https://github.com/hassio-addons/addon-portainer/tree
 As the current version (`2.0.0` at this time) of this addon has problems with starting containers this clone simply provides easy access to v1.5.2.
 
 See https://community.home-assistant.io/t/portainer-v2-6-2-unable-to-start-containers/332356 or https://github.com/hassio-addons/addon-portainer/issues/127 for more.
+
+### <img src="eufy-ha-mqtt-bridge/icon.png" width="40px"> Eufy Home Assistant MQTT Bridge ([matijse/eufy-ha-mqtt-bridge](https://github.com/matijse/eufy-ha-mqtt-bridge))
+
+#### I would no longer suggest to use this. There are way better alternatives out there, e.g. https://github.com/fuatakgun/eufy_security_addon
+
+Forwards Eufy Security push notifications to Home Assistant via MQTT.
+
+[repository-badge]: https://img.shields.io/badge/Add%20repository%20to%20my-Home%20Assistant-41BDF5?logo=home-assistant&style=for-the-badge
+[repository-url]: https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FMaxWinterstein%2Fhomeassistant-addons

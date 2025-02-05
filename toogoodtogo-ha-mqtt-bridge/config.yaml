@@ -1,17 +1,13 @@
 ---
 name: TooGoodToGo Home Assistant MQTT Bridge
-version: 2.2.3
-image: maxwinterstein/homeassistant-addon-toogoodtogo-ha-mqtt-bridge-{arch}
+version: 3.0.0.0
+image: ghcr.io/maxwinterstein/homeassistant-addon-toogoodtogo-ha-mqtt-bridge-{arch}
 slug: tgtg-ha-mqtt-bridge
 description: Publish TooGoodToGo stock as MQTT messages
 arch:
-  - armhf
+  - amd64
   - armv7
   - aarch64
-  - amd64
-  - i386
-startup: application
-boot: auto
 options:
   mqtt:
     host: homeassistant
@@ -22,6 +18,8 @@ options:
     email: me@example.com
     language: en-US
     polling_schedule: "*/10 * * * *"
+    intense_fetch_interval: 30
+    intense_fetch_period_of_time: 5
   timezone: Europe/Berlin
   locale: en_us
   cleanup: true
@@ -35,12 +33,14 @@ schema:
     email: str
     language: str
     polling_schedule: str
+    intense_fetch_interval: int(10,)
+    intense_fetch_period_of_time: int(,60)
   timezone: str?
   locale: str?
   cleanup: bool
 stage: experimental
 url: https://github.com/MaxWinterstein/toogoodtogo-ha-mqtt-bridge
-hassio_role: default
 hassio_api: true
 environment:
   DYNACONF_DATA_DIR: "/data/"
+init: false

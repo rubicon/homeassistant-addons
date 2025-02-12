@@ -1,6 +1,34 @@
 # Changelog
 
-## [2.2.3] - 2022-06.19
+<!-- towncrier release notes start -->
+
+## [3.0.0.0] - 2024-11-28
+
+- Update `toogoodtogo-ha-mqtt-bridge` to `3.0.0` (see [release notes](https://github.com/MaxWinterstein/toogoodtogo-ha-mqtt-bridge/releases))
+
+
+## [2.5.1.3] - 2023-10-06
+
+- Update base-image
+
+## [2.5.1.2] - 2023-01-26
+
+- Update `toogoodtogo-ha-mqtt-bridge` to `2.5.1` (see [release notes](https://github.com/MaxWinterstein/toogoodtogo-ha-mqtt-bridge/releases))
+
+## [2.4.0.1] - 2022-12-09
+
+- Internal: Change to ghcr container registry and new build process
+
+## [2.4.0] - 2022-08-20
+
+- Update `toogoodtogo-ha-mqtt-bridge` to `2.4.0` (see [release notes](https://github.com/MaxWinterstein/toogoodtogo-ha-mqtt-bridge/releases))
+
+## [2.3.0] - 2022-06-26
+
+- Update `toogoodtogo-ha-mqtt-bridge` to `2.3.0` (see [release notes](https://github.com/MaxWinterstein/toogoodtogo-ha-mqtt-bridge/releases))  
+  **Note:** This introduces the new [`intense_fetch`](https://github.com/MaxWinterstein/toogoodtogo-ha-mqtt-bridge/blob/main/README.md#intense_fetch-optional)
+
+## [2.2.3] - 2022-06-19
 
 - Update `toogoodtogo-ha-mqtt-bridge` to `2.2.3` (see [release notes](https://github.com/MaxWinterstein/toogoodtogo-ha-mqtt-bridge/releases))
 

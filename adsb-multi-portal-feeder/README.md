@@ -1,6 +1,6 @@
 # Home Assistant Add-On: dump1090 based feeder for FlightRadar24, FlightAware, ADSBexchange and Plane Finder
 
-<a href='https://ko-fi.com/supportkofi' target='_blank'><img height='35' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com'></a>
+<a href='https://ko-fi.com/MaxWinterstein' target='_blank'><img height='35' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com'></a>
 
 Add-on to feed ADS-B data from a cheap USB ADS-B Stick (e.g. [Nooelec NESDR Mini](https://www.amazon.com/gp/product/B009U7WZCA)) to FlightRadar24, FlightAware, ADSBexchange and Plane Finder.
 
@@ -16,9 +16,22 @@ I just added a few sprinkles to make it work with Home Assistant.
 
 - If not already done, add the Add-on repostitory ([see](https://github.com/MaxWinterstein/homeassistant-addons#installation))
 - If you want to share to FlightRadar24 and/or FlightAware and/or ADSBexchange and/or Plane Finder, generate needed keys ([see below](https://github.com/MaxWinterstein/homeassistant-addons/tree/main/adsb-multi-portal-feeder#flightaware-feeder-id--flightrader24-key--adsbexchange-uuid))
-- If you want to use the dump1090 WebInterface (like the screenshot above) you need to set Lat/Lon for your location ([see below(https://github.com/MaxWinterstein/homeassistant-addons/tree/main/adsb-multi-portal-feeder#latitude--longitude))
+- If you want to use the dump1090 WebInterface (like the screenshot above) you need to set Lat/Lon for your location ([see below](https://github.com/MaxWinterstein/homeassistant-addons/tree/main/adsb-multi-portal-feeder#latitude--longitude))
 
 ## Sensors for Home Assistant
+
+### Automatically added sensors
+
+With version `1.27.0` I integrated the lovely project [adsb-hassio-sensors](https://github.com/plo53/adsb-hassio-sensors/tree/master) from [plo53](https://github.com/plo53).
+
+This exposes sensors related to the feeder, e.g. `sensor.adsbfi_icao`, `sensor.adsbfi_mlat`, `sensor.adsbfi_mode_s`, `sensor.adsbfi_status` for the Adsb.fi feeder.
+
+![Assistant ADS-B sensors](https://raw.githubusercontent.com/MaxWinterstein/homeassistant-addons/main/adsb-multi-portal-feeder/images/Home%20Assistant%20ADS-B%20sensors.jpg)  
+![Assistant adsb.fi stats.jpg](https://raw.githubusercontent.com/MaxWinterstein/homeassistant-addons/main/adsb-multi-portal-feeder/images/Home%20Assistant%20adsb.fi%20stats.jpg)
+
+The current discussion about that freshly added thing can be found within [#172](https://github.com/MaxWinterstein/homeassistant-addons/issues/172)
+
+### Rest Sensors
 
 If you would like some nice statistics you can use a rest sensor with some template magic to show e.g. the number of aircrafts currently tracked:
 
@@ -38,7 +51,7 @@ resource: http://f1c878cb-adsb-multi-portal-feeder:8754/monitor.json
 The whole configuration is meant to work alike the original docker image.  
 See [docker-fr24feed-piaware-dump1090](https://github.com/Thom-x/docker-fr24feed-piaware-dump1090) for more info.
 
-I pre-provivde the (i guess) most used workflow: Send data from USB ADB-S stick to FlightRadar24, FlightAware, ADSBexchange and Plane Finder and have a nice little web based overview as Home Assistant menu entry.
+I pre-provivde the (i guess) most used workflow: Send data from USB ADS-B stick to FlightRadar24, FlightAware, ADSBexchange and Plane Finder and have a nice little web based overview as Home Assistant menu entry.
 
 It it possible to retrive and use the location information of home assistant itself, using some magic variables, which will be replaced automatically:
 
